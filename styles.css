@@ -153,7 +153,7 @@ Landing Page
 }
 .dark-theme .scroll__icon:after,
 .dark-theme .link__hover-effect--black:after {
-    background-color: #f32424;
+    background-color: #fff;
 }
 
 .dark-theme .mail__btn {
