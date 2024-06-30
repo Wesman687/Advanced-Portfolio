@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="./javascript.js" defer></script>
+    <script src="./index.js" defer></script>
+    <script src="https://kit.fontawesome.com/f5fc8f7e11.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "-oDnm3c44vAQ32-Fx",
+      });
+   })();
+</script>
 </head>
 <body>
-    <section id="landing-page">
+    <section id="landing-page" onmousemove="moveBackground(event)">
         <nav>
             <figure>
                 <img src="./assets/logo.svg" id="personal-logo" alt="">
             </figure>
             <ul class="nav__link--list">
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModal()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
@@ -23,7 +34,7 @@
                     ">About</a>
                 </li>
                 <li class="nav__link">
-                    <a href="#" class="
+                    <a href="#projects" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
@@ -34,9 +45,9 @@
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
-                    ">Contact</a>
+                    " onclick="toggleModal()">Contact</a>
                 </li>
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleContrast()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
@@ -52,7 +63,7 @@
                 <p class="header__para">
                     I'm a <b class="secondary">Frontend Software Engineer </b>with a strong passion for building web applications with great user experiences.  
                     <br>
-                    Here's a bit <b class="secondary">about me.</b>
+                    Here's a bit more <b class="secondary click" onclick="toggleModal()">about me.</b>
                 </p>
                 <div class="social__list">
                     <a href="https://google.com" target="_blank" class="social__link click"><i class="fab fa-linkedin-in"></i></a>
@@ -61,14 +72,107 @@
                 </div>
             </div>
         </header>
-        <button class="mail__btn click">
+        <a href="#">
+        <button class="mail__btn click" onclick=toggleModal()>
             <i class="fas fa-envelope"></i>       
         </button>
+    </a>
         <a href="#projects" class="scroll">
             <div class="scroll__icon click"></div>
         </a>
+        <div class="modal">
+            <div class="modal__half modal__about">
+                <h3 class="modal__title modal__title--about">Here's a bit more about me.</b></h3>
+                <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer</h4>
+                <p class="modal__para">
+                    I'm a 39 year old software engineer, with a strong passion for developing websites with great <b class="secondary"> with a great user experience.</b>
+                <br>
+                I currently work on extremely difficult engineering problems and learn from a team consisting of some of the most <b class="secondary">talented </b> and <b class="secondary">experienced </b> software engineers every day.
+                </p>
+                <div class="modal__languages">
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png" alt="">
+                    <span class="language__name">HTML</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png" alt="">
+                    <span class="language__name">CSS</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png" alt="">
+                    <span class="language__name">JavaScript</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/typescript-3521774-2945272.png" alt="">
+                    <span class="language__name">TypeScript</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" alt="">
+                    <span class="language__name">VUE</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/nuxt-dot-js-3628959-3030184.png" alt="">
+                    <span class="language__name">Nuxt</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/react-3-1175109.png" alt="">
+                    <span class="language__name">React</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="https://mobx.js.org/img/mobx.png" alt="">
+                    <span class="language__name">Mobx</span>
+                    </figure>
+                </div>
+            </div>
+            <div class="modal__half modal__contact">
+                <h3 class="modal__title modal__title--contact">
+                    Anxious to hear from you.
+                </h3>
+                <h3 class="modal__sub-title modal__sub-title--contact">
+                    I'm currently open for new and exciting opportunities.
+                </h3>
+                <form id="contact__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="form__item--label name">Name</label>
+                        <input type="text" name="user_name" class="input" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">E-mail</label>
+                        <input type="email" name="user_email" class="input" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Message</label>
+                        <textarea type="text" name="message" class="input" required></textarea>
+                    </div>
+                    <button id="contact__submit" class="form__submit">
+                        Send it my way
+                    </button>
+                    <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="modal__overlay modal__overlay--success">
+                    Thanks for the response! I look forward to speaking with you soon.
+                    <i class="fa-solid fa-arrows-rotate modal__refresh click" onclick="refreshModal()"></i>
+                </div>
+                
+            </div>
+            
+
+        </div>
+        <img src="./assets/semi circle.svg" class="shape shape--0">
+        <img src="./assets/circle.svg" class="shape shape--1">
+        <img src="./assets/squiggly.svg" class="shape shape--2">
+        <img src="./assets/circle.svg" class="shape shape--3">
+        <img src="./assets/triangle.svg" class="shape shape--4">
+        <img src="./assets/circle.svg" class="shape shape--5">
+        <img src="./assets/squiggly.svg" class="shape shape--6">
+        <img src="./assets/circle.svg" class="shape shape--7">
+        <img src="./assets/semi circle.svg" class="shape shape--8">
     </section>
     <section id="projects">
+        <div class="container">
         <div class="row">
             <h1 class="section__title">
                 Here are some of my <span class="secondary">projects</span>
@@ -100,6 +204,61 @@
                     </div>
                 </li>
             </ui>
+            <ui class="project__list">
+                <li class="project">
+                    <div class="project__wrapper">
+                        <img src="./assets/blinker mockup.png" class="project__img" alt="">
+                        <div class="project__wrapper--bg"></div>
+                        <div class="project__description">
+                            <h3 class="project__description--title">
+                                Car Sales Projects
+                            </h3>
+                            <h4 class="project__description--sub-title">
+                                HTML, CSS, Javascript, Vue, Vuex
+                            </h4>
+                            <p class="project__description--para">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ratione a ipsa porro ut nulla, est libero incidunt soluta eius aliquid inventore iure vitae adipisci, eos eveniet aliquam labore mollitia voluptas odit. Beatae, doloribus amet!
+                            </p>
+                            <div class="project__description--links">
+                                <a href="" class="project__description--link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="" class="project__description--link">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ui>
+            <ui class="project__list">
+                <li class="project">
+                    <div class="project__wrapper">
+                        <img src="./assets/blinker mockup.png" class="project__img" alt="">
+                        <div class="project__wrapper--bg"></div>
+                        <div class="project__description">
+                            <h3 class="project__description--title">
+                                Car Sales Projects
+                            </h3>
+                            <h4 class="project__description--sub-title">
+                                HTML, CSS, Javascript, Vue, Vuex
+                            </h4>
+                            <p class="project__description--para">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ratione a ipsa porro ut nulla, est libero incidunt soluta eius aliquid inventore iure vitae adipisci, eos eveniet aliquam labore mollitia voluptas odit. Beatae, doloribus amet!
+                            </p>
+                            <div class="project__description--links">
+                                <a href="" class="project__description--link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="" class="project__description--link">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ui>
+        </div>
         </div>
     </section>
     <footer>
@@ -119,12 +278,12 @@
                 link__hover-effect
                 link__hover-effect--white
                 ">LinkedIn</a>
-                <a href="" class="
+                <a href="#" onclick="toggleModal()" class="
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
                 ">Contact</a>
-                <a href="" class="
+                <a href="./assets/David Bragg Resume.pdf" target="_blank" class="
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
